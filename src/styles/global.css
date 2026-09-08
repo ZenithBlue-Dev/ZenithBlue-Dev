@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-abyss: #060b1c;
+  --color-surface: #0b1226;
+  --color-elevated: #111a36;
+  --color-overlay: #182449;
+  --color-pulse: #5cc8ff;
+  --color-pulse-dim: #2b7fb8;
+  --color-pulse-muted: #10293d;
+  --color-focus: #8fdcff;
+  --color-cream: #eaf2fb;
+  --color-warm: #93a3bd;
+  --color-faint: #2b3245;
+
+  --font-display: "Rajdhani", system-ui, sans-serif;
+  --font-heading: "Rajdhani", system-ui, sans-serif;
+  --font-body: "Rajdhani", system-ui, sans-serif;
+  --font-mono2: ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-abyss);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #5cc8ff;
+  color: #060b1c;
+}
+
+/* Subtle studio atmosphere */
+.glow-grid {
+  background-image:
+    linear-gradient(rgba(92, 200, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 200, 255, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 75%);
+}
+
+.focus-glow {
+  box-shadow:
+    0 0 0 2px #8fdcff,
+    0 0 24px 8px rgba(92, 200, 255, 0.55),
+    0 0 64px 16px rgba(92, 200, 255, 0.2);
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Ticker */
+@keyframes ticker-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-inner {
+  animation: ticker-x 28s linear infinite;
+}
+.ticker-inner:hover {
+  animation-play-state: paused;
+}
+
+/* Gentle float */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.float-slow {
+  animation: float-y 5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-slow { animation: none; }
+}
+
+/* FAQ */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s ease;
+}
+.faq-item[data-open="true"] .faq-answer {
+  grid-template-rows: 1fr;
+}
+.faq-item[data-open="true"] .faq-chevron {
+  transform: rotate(180deg);
+}
+.faq-chevron {
+  transition: transform 0.25s ease;
+}

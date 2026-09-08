@@ -1,0 +1,23 @@
+---
+const points = [
+  { t: "Native-first", d: "Kotlin and low-level APIs where it counts — no cross-platform jank, no web wrappers." },
+  { t: "Performance obsessed", d: "Cold starts in milliseconds, lean APKs, respectful battery and memory use." },
+  { t: "Open & honest", d: "Public repos, clear changelogs, no dark patterns or data grabs." },
+  { t: "Designed for real use", d: "Controller-first, one-hand friendly, readable on small screens and TVs alike." },
+];
+---
+
+<section id="why" class="border-y border-white/10 bg-surface/40">
+  <div class="mx-auto max-w-6xl scroll-mt-20 px-4 py-20 sm:px-6">
+    <p class="reveal font-mono2 text-xs tracking-widest text-pulse">— WHY ZENITHBLUE</p>
+    <h2 class="reveal mt-2 text-3xl font-bold sm:text-4xl">Small studio, high bar</h2>
+    <div class="mt-10 grid gap-5 sm:grid-cols-2">
+      {points.map((p) => (
+        <div class="reveal rounded-3xl border border-white/10 bg-abyss p-6">
+          <h3 class="text-lg font-bold text-pulse">{p.t}</h3>
+          <p class="mt-2 text-warm">{p.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
